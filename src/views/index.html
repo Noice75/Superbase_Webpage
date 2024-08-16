@@ -6,6 +6,8 @@
     <title>Document</title>
     <script type="module" src="../utils/checkAuth.js"></script>
     <script type="module" src="../utils/auth.js"></script>
+    <link rel="stylesheet" href="../css/loader.css" />
+    <link rel="stylesheet" href="../css/login.css" />
     <!-- <script type="module">
       import supabase from "./initialize.js";
       const { data, error: insertError } = await supabase
@@ -26,7 +28,14 @@
     </script> -->
   </head>
   <body>
-    <button onclick="logoutUser()">LOG OUT</button>
-    <button onclick="window.location.href='profile.html'">Profile</button>
+    <div id="login-from-wrapper" class="background">
+      <div id="particles-background" class="vertical-centered-box"></div>
+      <div id="particles-foreground" class="vertical-centered-box"></div>
+    </div>
+    <div class="content">
+      <button onclick="logoutUser()">LOG OUT</button>
+      <button onclick="window.location.href='profile.html'">Profile</button>
+    </div>
   </body>
+  <script src="../utils/loader.js"></script>
 </html>
