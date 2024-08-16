@@ -5,61 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Page</title>
     <script src="../js/login.js" type="module"></script>
+    <link rel="stylesheet" href="../css/loader.css" />
+    <link rel="stylesheet" href="../css/login.css" />
   </head>
   <body>
-    <h2>Login Page</h2>
-
+    <div class="background">
+      <div id="particles-background" class="vertical-centered-box"></div>
+      <div id="particles-foreground" class="vertical-centered-box"></div>
+    </div>
     <!-- Login Form -->
-    <div id="login-form">
-      <h3>Login</h3>
-      <input type="email" id="login-email" placeholder="Email" required />
-      <input
-        type="password"
-        id="login-password"
-        placeholder="Password"
-        required
-      />
-      <button onclick="login()">Login</button>
-      <p><a href="#" onclick="showForgotPassword()">Forgot Password?</a></p>
-      <p>
-        <a href="#" onclick="showSignup()">Don't have an account? Sign up</a>
-      </p>
-    </div>
+    <div class="content">
+      <div id="login-form">
+        <h2>Login</h2>
+        <div class="input-field">
+          <input id="login-email" type="text" required />
+          <label>Enter your email</label>
+        </div>
+        <div class="input-field">
+          <input id="login-password" type="password" required />
+          <label>Enter your password</label>
+        </div>
+        <div class="forget">
+          <a href="#" onclick="showForgotPassword()">Forgot password?</a>
+        </div>
+        <button onclick="login()">Log In</button>
+        <div class="register">
+          <p>
+            Don't have an account?
+            <a href="#" onclick="showSignup()">Register</a>
+          </p>
+        </div>
+      </div>
 
-    <!-- Sign Up Form -->
-    <div id="signup-form" style="display: none">
-      <h3>Sign Up</h3>
-      <input type="email" id="signup-email" placeholder="Email" required />
-      <input type="text" id="username" placeholder="Username" required />
-      <input
-        type="password"
-        id="signup-password"
-        placeholder="Password"
-        required
-      />
-      <input
-        type="password"
-        id="signup-confirm-password"
-        placeholder="Confirm Password"
-        required
-      />
-      <button onclick="signUp()">Sign Up</button>
-      <p>
-        <a href="#" onclick="showLogin()">Already have an account? Login</a>
-      </p>
-    </div>
+      <div id="signup-form" style="display: none">
+        <h2>Sign Up</h2>
+        <div class="input-field">
+          <input id="signup-email" type="email" required />
+          <label>Enter your email</label>
+        </div>
+        <div class="input-field">
+          <input id="username" type="text" required />
+          <label>Username</label>
+        </div>
+        <div class="input-field">
+          <input id="signup-password" type="password" required />
+          <label>Enter your password</label>
+        </div>
+        <div class="input-field">
+          <input id="signup-confirm-password" type="password" required />
+          <label>Confirm password</label>
+        </div>
+        <button onclick="signUp()">Sign Up</button>
+        <p>
+          <a href="#" onclick="showLogin()">Already have an account? Login</a>
+        </p>
+      </div>
 
-    <!-- Forgot Password Form -->
-    <div id="forgot-password-form" style="display: none">
-      <h3>Forgot Password</h3>
-      <input
-        type="email"
-        id="forgot-password-email"
-        placeholder="Email"
-        required
-      />
-      <button onclick="forgotPassword()">Reset Password</button>
-      <p><a href="#" onclick="showLogin()">Back to Login</a></p>
+      <!-- Forgot Password Form -->
+      <div id="forgot-password-form" style="display: none">
+        <h3>Forgot Password</h3>
+        <div class="input-field">
+          <input id="forgot-password-email" type="email" required />
+          <label>Enter your email</label>
+        </div>
+        <button onclick="forgotPassword()">Reset Password</button>
+        <p><a href="#" onclick="showLogin()">Back to Login</a></p>
+      </div>
     </div>
   </body>
+  <script src="../utils/loader.js"></script>
 </html>
