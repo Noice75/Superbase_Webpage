@@ -14,6 +14,8 @@ async function logoutUser() {
   if (error) {
     console.error("Logout failed:", error.message);
   } else {
+    sessionStorage.clear();
+    localStorage.clear();
     console.log("User logged out");
     window.location.href = "login.html"; // Redirect to login page
   }

@@ -6,21 +6,31 @@
     <title>Unity WebGL Player | My project (4)</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico" />
     <link rel="stylesheet" href="TemplateData/style.css" />
+    <link rel="stylesheet" href="../../css/background.css" />
   </head>
   <body>
-    <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width="960" height="600" tabindex="-1"></canvas>
-      <div id="unity-loading-bar">
-        <div id="unity-logo"></div>
-        <div id="unity-progress-bar-empty">
-          <div id="unity-progress-bar-full"></div>
+    <div id="login-from-wrapper" class="background">
+      <div id="particles-background" class="vertical-centered-box"></div>
+      <div id="particles-foreground" class="vertical-centered-box"></div>
+    </div>
+    <div class="container">
+      <div id="unity-container" class="unity-desktop">
+        <canvas
+          id="unity-canvas"
+          width="960"
+          height="600"
+          tabindex="-1"
+        ></canvas>
+        <div id="unity-loading-bar">
+          <div id="unity-logo"></div>
+          <div id="unity-progress-bar-empty">
+            <div id="unity-progress-bar-full"></div>
+          </div>
         </div>
-      </div>
-      <div id="unity-warning"></div>
-      <div id="unity-footer">
-        <div id="unity-webgl-logo"></div>
-        <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">My project (4)</div>
+        <div id="unity-warning"></div>
+        <div id="unity-footer">
+          <div id="unity-fullscreen-button"></div>
+        </div>
       </div>
     </div>
     <script>
@@ -121,4 +131,5 @@
       document.body.appendChild(script);
     </script>
   </body>
+  <script src="../../utils/background.js"></script>
 </html>
