@@ -30,10 +30,17 @@
     <div id="signup-form" style="display: none">
       <h3>Sign Up</h3>
       <input type="email" id="signup-email" placeholder="Email" required />
+      <input type="text" id="username" placeholder="Username" required />
       <input
         type="password"
         id="signup-password"
         placeholder="Password"
+        required
+      />
+      <input
+        type="password"
+        id="signup-confirm-password"
+        placeholder="Confirm Password"
         required
       />
       <button onclick="signUp()">Sign Up</button>

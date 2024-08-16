@@ -23,21 +23,85 @@ async function login() {
   }
 }
 
+async function uploadUsername(id, username) {
+  try {
+    const { data, error } = await supabase.rpc("insertUsername", {
+      p_id: id,
+      p_username: username,
+    });
+
+    if (error) {
+      alert("Error checking username:", error.message);
+      return false;
+    }
+
+    return data; // Returns true or false
+  } catch (error) {
+    alert("Unexpected error:", error);
+    return false;
+  }
+}
+
+async function checkUsername(username) {
+  try {
+    const { data, error } = await supabase.rpc("checkUsername", {
+      p_username: username,
+    });
+
+    if (error) {
+      alert("Error checking username:", error.message);
+      return false;
+    }
+    return data; // Returns true or false
+  } catch (error) {
+    alert("Unexpected error:", error);
+    return false;
+  }
+}
+
+function validateInputs(email, username, password, confirmpassword) {
+  email = email.trim();
+  username = username.trim();
+  password = password.trim();
+  confirmpassword = confirmpassword.trim();
+
+  // Check if any field is empty after trimming or passwords do not match
+  if (!email || !username || !password || !confirmpassword) {
+    alert("All fields are required and should not be empty or spaces.");
+    return false;
+  }
+
+  if (password !== confirmpassword) {
+    alert("Passwords do not match!");
+    return false;
+  }
+
+  return true;
+}
+
 // Function to sign up
 async function signUp() {
   const email = document.getElementById("signup-email").value;
+  const username = document.getElementById("username").value;
   const password = document.getElementById("signup-password").value;
+  const confirmpassword = document.getElementById(
+    "signup-confirm-password"
+  ).value;
+
+  if (!validateInputs(email, username, password, confirmpassword)) return;
+  if (await checkUsername(username)) {
+    alert("Username Taken!");
+    return;
+  }
 
   const { data, error } = await supabase.auth.signUp({ email, password });
-
   if (error) {
     alert("Sign up failed: " + error.message);
-  } else {
-    alert(
-      "Signed up successfully! Please check your email to confirm your account."
-    );
-    showLogin();
+    return;
   }
+
+  await uploadUsername(data.user.id, username);
+  window.location.href = "./index.html";
 }
 
 // Function to reset password
