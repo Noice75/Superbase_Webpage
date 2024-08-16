@@ -5,13 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="../utils/checkAuth.js"></script>
     <script src="../js/profile.js" type="module"></script>
+    <link rel="stylesheet" href="../css/background.css" />
     <title>Document</title>
   </head>
   <body>
-    <h1>PROFILE</h1>
-    <h2 id="email"></h2>
-    <h2 id="username"></h2>
-    <h2 id="id"></h2>
-    <h2 id="ll"></h2>
+    <!-- Background -->
+    <div id="login-from-wrapper" class="background">
+      <div id="particles-background" class="vertical-centered-box"></div>
+      <div id="particles-foreground" class="vertical-centered-box"></div>
+    </div>
+    <div class="content" style="padding-left: 30%; padding-top: 12%">
+      <h1>PROFILE</h1>
+      <h2 id="email"></h2>
+      <h2 id="username"></h2>
+      <h2 id="id"></h2>
+      <h2 id="ll"></h2>
+    </div>
   </body>
+  <script src="../utils/background.js"></script>
 </html>

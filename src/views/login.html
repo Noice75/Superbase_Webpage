@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Page</title>
     <script src="../js/login.js" type="module"></script>
-    <link rel="stylesheet" href="../css/loader.css" />
+    <link rel="stylesheet" href="../css/background.css" />
     <link rel="stylesheet" href="../css/login.css" />
   </head>
   <body>
+    <!-- Background -->
     <div id="login-from-wrapper" class="background">
       <div id="particles-background" class="vertical-centered-box"></div>
       <div id="particles-foreground" class="vertical-centered-box"></div>
     </div>
-    <!-- Login Form -->
+
     <div class="content">
+      <!-- Login Form -->
       <div id="login-form">
         <h2>Login</h2>
         <div class="input-field">
@@ -37,6 +39,7 @@
         </div>
       </div>
 
+      <!-- Signup Form -->
       <div id="signup-form" style="display: none">
         <h2>Sign Up</h2>
         <div class="input-field">
@@ -71,6 +74,8 @@
         <button onclick="forgotPassword()">Reset Password</button>
         <p><a href="#" onclick="showLogin()">Back to Login</a></p>
       </div>
+
+      <!-- Loading -->
       <div id="loader" style="display: none">
         <h1>Logging In</h1>
         <div style="padding: 40%">
@@ -79,5 +84,5 @@
       </div>
     </div>
   </body>
-  <script src="../utils/loader.js"></script>
+  <script src="../utils/background.js"></script>
 </html>
