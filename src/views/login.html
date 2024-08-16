@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/login.css" />
   </head>
   <body>
-    <div class="background">
+    <div id="login-from-wrapper" class="background">
       <div id="particles-background" class="vertical-centered-box"></div>
       <div id="particles-foreground" class="vertical-centered-box"></div>
     </div>
@@ -70,6 +70,12 @@
         </div>
         <button onclick="forgotPassword()">Reset Password</button>
         <p><a href="#" onclick="showLogin()">Back to Login</a></p>
+      </div>
+      <div id="loader" style="display: none">
+        <h1>Logging In</h1>
+        <div style="padding: 40%">
+          <div class="loader"></div>
+        </div>
       </div>
     </div>
   </body>

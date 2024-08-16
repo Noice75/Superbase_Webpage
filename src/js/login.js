@@ -3,6 +3,14 @@ import supabase from "../utils/initialize.js";
 const { data: { session } = {} } = await supabase.auth.getSession(); //Gets Saved User Session
 if (session) window.location.href = "index.html"; // If already loggedin Redirect to home page
 
+async function showLoader() {
+  document.getElementById("login-form").style.display = "none";
+  document.getElementById("signup-form").style.display = "none";
+  document.getElementById("loader").style.display = "block";
+  await new Promise((resolve) => setTimeout(resolve, 1500));
+  window.location.href = "./index.html";
+}
+
 async function login() {
   const email = document.getElementById("login-email").value;
   const password = document.getElementById("login-password").value;
@@ -19,7 +27,7 @@ async function login() {
     localStorage.setItem("userSession", JSON.stringify(data.session));
     const session = localStorage.getItem("userSession");
     console.log(session);
-    window.location.href = "index.html";
+    await showLoader();
   }
 }
 
@@ -101,7 +109,7 @@ async function signUp() {
   }
 
   await uploadUsername(data.user.id, username);
-  window.location.href = "./index.html";
+  await showLoader();
 }
 
 // Function to reset password
