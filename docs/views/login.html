@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <script src="../js/login.js" type="module"></script>
+  </head>
+  <body>
+    <h2>Login Page</h2>
+
+    <!-- Login Form -->
+    <div id="login-form">
+      <h3>Login</h3>
+      <input type="email" id="login-email" placeholder="Email" required />
+      <input
+        type="password"
+        id="login-password"
+        placeholder="Password"
+        required
+      />
+      <button onclick="login()">Login</button>
+      <p><a href="#" onclick="showForgotPassword()">Forgot Password?</a></p>
+      <p>
+        <a href="#" onclick="showSignup()">Don't have an account? Sign up</a>
+      </p>
+    </div>
+
+    <!-- Sign Up Form -->
+    <div id="signup-form" style="display: none">
+      <h3>Sign Up</h3>
+      <input type="email" id="signup-email" placeholder="Email" required />
+      <input type="text" id="username" placeholder="Username" required />
+      <input
+        type="password"
+        id="signup-password"
+        placeholder="Password"
+        required
+      />
+      <input
+        type="password"
+        id="signup-confirm-password"
+        placeholder="Confirm Password"
+        required
+      />
+      <button onclick="signUp()">Sign Up</button>
+      <p>
+        <a href="#" onclick="showLogin()">Already have an account? Login</a>
+      </p>
+    </div>
+
+    <!-- Forgot Password Form -->
+    <div id="forgot-password-form" style="display: none">
+      <h3>Forgot Password</h3>
+      <input
+        type="email"
+        id="forgot-password-email"
+        placeholder="Email"
+        required
+      />
+      <button onclick="forgotPassword()">Reset Password</button>
+      <p><a href="#" onclick="showLogin()">Back to Login</a></p>
+    </div>
+  </body>
+</html>
