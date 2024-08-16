@@ -1,4 +1,4 @@
-import supabase from "./initialize.js";
+import supabase from "../utils/initialize.js";
 
 const { data: { session } = {} } = await supabase.auth.getSession(); //Gets Saved User Session
 if (session) window.location.href = "index.html"; // If already loggedin Redirect to home page

@@ -1,4 +1,4 @@
-import supabase from "./initialize.js";
+import supabase from "../utils/initialize.js";
 
 const {
   data: { session },
