@@ -24,9 +24,15 @@ async function login() {
     alert("Login failed: " + error.message);
   } else {
     //TODO: ADD LOADING SCREEN
+    const { data: usernameData, error1 } = await supabase
+      .from("usernames")
+      .select("*")
+      .eq("id", data.session.user.id);
+    if (error1) {
+      console.error("Error fetching data:", error);
+    }
+    localStorage.setItem("username", usernameData[0].username);
     localStorage.setItem("userSession", JSON.stringify(data.session));
-    const session = localStorage.getItem("userSession");
-    console.log(session);
     await showLoader();
   }
 }
