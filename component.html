@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Post</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="global.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <h2>Custom Feeds</h2>
+        <button>Create a custom feed</button>
+        <h2>Communities</h2>
+        <button>Create a community</button>
+        <ul>
+          <li><img src="reddit-logo.png" alt="Reddit" /> r/aww</li>
+          <li><img src="reddit-logo.png" alt="Reddit" /> r/funny</li>
+          <li><img src="reddit-logo.png" alt="Reddit" /> r/gaming</li>
+        </ul>
+      </div>
+      <div class="main-content">
+        <h1>Create Post</h1>
+        <div class="post-form">
+          <div class="post-options">
+            <button class="active">Text</button>
+            <button>Images & Video</button>
+            <button>Link</button>
+            <button>Poll</button>
+          </div>
+          <div class="input-group">
+            <input type="text" placeholder="Title" maxlength="300" required />
+          </div>
+          <div class="input-group">
+            <textarea placeholder="Body"></textarea>
+          </div>
+          <div class="post-actions">
+            <button class="save-draft">Save Draft</button>
+            <button class="post">Post</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
