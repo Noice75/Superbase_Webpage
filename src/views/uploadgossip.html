@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Post</title>
+    <script type="module" src="../utils/checkAuth.js"></script>
+    <script type="module" src="../js/uploadgossip.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/gossipbar.css" />
+  </head>
+  <body>
+    <div class="content">
+      <div class="container">
+        <div class="main-content">
+          <h1>Create Gossip 😋😝</h1>
+          <div class="post-form">
+            <div class="post-options">
+              <button class="active">Text</button>
+              <button>Images & Video</button>
+              <button>Link</button>
+              <button>Poll</button>
+            </div>
+            <div class="input-group">
+              <input
+                id="gossipTitle"
+                type="text"
+                placeholder="Title"
+                maxlength="300"
+                required
+              />
+            </div>
+            <div class="input-group">
+              <div class="toolbar">
+                <button onclick="format('bold')"><b>B</b></button>
+                <button onclick="format('italic')"><i>I</i></button>
+                <button onclick="format('underline')"><u>U</u></button>
+                <button onclick="format('strikeThrough')"><s>S</s></button>
+                <button onclick="format('superscript')">A<sup>^</sup></button>
+                <button onclick="format('subscript')">A<sub>v</sub></button>
+                <button onclick="format('insertUnorderedList')">&#8226;</button>
+                <button onclick="format('insertOrderedList')">1.</button>
+                <button onclick="addLink()">&#128279;</button>
+                <button onclick="triggerFileInput()">&#128247;</button>
+                <button onclick="format('justifyLeft')">&#8676;</button>
+                <button onclick="format('justifyCenter')">&#8608;</button>
+                <button onclick="format('justifyRight')">&#8677;</button>
+              </div>
+              <div class="input-group">
+                <div id="editor" contenteditable="true" class="editor">
+                  Body
+                </div>
+                <div id="thumbnailContainer" class="image-thumbnail-container">
+                  <!-- Thumbnail boxes will be added here -->
+                </div>
+              </div>
+              <input
+                type="file"
+                id="fileInput"
+                style="display: none"
+                accept="image/*"
+                onchange="addImageFromFile()"
+              />
+            </div>
+            <div class="post-actions">
+              <button id="post" class="post">Post</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

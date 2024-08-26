@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="module" src="../utils/checkAuth.js"></script>
+    <link rel="stylesheet" href="../css/background.css" />
+    <link rel="stylesheet" href="../css/login.css" />
+    <script type="module">
+      import { logoutUser } from "../utils/user.js";
+      window.logoutUser = logoutUser;
+    </script>
+  </head>
+  <body>
+    <div id="login-from-wrapper" class="background">
+      <div id="particles-background" class="vertical-centered-box"></div>
+      <div id="particles-foreground" class="vertical-centered-box"></div>
+    </div>
+    <div class="content">
+      <button onclick="logoutUser()">LOG OUT</button>
+      <button onclick="window.location.href='profile.html'">PROFILE</button>
+      <button onclick="window.location.href = 'gossip.html'">Gossip Bar</button>
+    </div>
+  </body>
+  <script src="../utils/background.js"></script>
+</html>
