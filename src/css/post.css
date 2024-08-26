@@ -1,5 +1,5 @@
 body {
-  background-color: #1a1a1b;
+  background-color: #0a0f1e;
   color: #d7dadc;
   font-family: Arial, sans-serif;
   display: flex;
@@ -22,7 +22,7 @@ body {
 }
 
 .post-container {
-  background-color: #272729;
+  background-color: #1a2236;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 16px;
