@@ -83,7 +83,7 @@ function createPost(data) {
     img2Container = "";
     controller = "";
   }
-  const imageContainer = `<div class="slideshow-container">
+  const imageContainer = `<div id="swipe${postId}" class="slideshow-container">
       <!-- Full-width images with number and caption text -->
       ${img1Container}
       ${img2Container}
@@ -155,6 +155,37 @@ function createPost(data) {
   // Thumbnail image controls
   function currentSlide(n) {
     showSlides((slideIndex = n));
+  }
+
+  const swipeImage = document.getElementById(`swipe${postId}`);
+
+  let startX;
+
+  swipeImage.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  swipeImage.addEventListener("touchend", (e) => {
+    const endX = e.changedTouches[0].clientX;
+    handleSwipe(startX, endX);
+  });
+
+  function handleSwipe(startX, endX) {
+    const diffX = startX - endX;
+
+    if (diffX > 50) {
+      swipeLeft();
+    } else if (diffX < -50) {
+      swipeRight();
+    }
+  }
+
+  function swipeLeft() {
+    plusSlides(1);
+  }
+
+  function swipeRight() {
+    plusSlides(-1);
   }
 
   document.getElementById(`prev${postId}`).addEventListener("click", () => {
