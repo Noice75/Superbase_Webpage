@@ -1,0 +1,16 @@
+//creatingViews
+CREATE VIEW public.gossip AS
+SELECT 
+    gossipbar.id,
+    gossipbar.title,
+    gossipbar.content,
+    gossipbar.likes,
+    gossipbar.images,
+    gossipbar.created_at,
+    usernames.username
+FROM 
+    public.gossipbar
+JOIN 
+    public.usernames
+ON 
+    gossipbar.user_id = usernames.id;

@@ -1,13 +1,8 @@
 import supabase from "../utils/initialize.js";
 
-var id = 0;
-
 function createPost(data) {
-  data["id"] = id;
-  id++;
-
   const postSections = document.getElementById("post-sections");
-  const postId = `post-${Date.now()}-${id}`;
+  const postId = `post-${data["id"]}`;
   if (data.img1 === null) {
     const postHTML = `
     <div id="${postId}" class="post-container"> <!-- Assign postId here -->
@@ -267,10 +262,11 @@ function formatTimeAgo(date) {
 async function fetchPost() {
   var dict = {};
   const { data, error } = await supabase
-    .from("gossipbar")
+    .from("gossip")
     .select("*")
     .order("created_at", { ascending: false });
   for (let j = 0; j < Object.keys(data).length; j++) {
+    console.log(data[j]);
     if (data[j].images[0] === null) {
       dict["img1"] = null;
       dict["img2"] = null;
@@ -282,7 +278,6 @@ async function fetchPost() {
       dict["img2"] = await getImage(data[j].images, 1);
     }
     dict["id"] = data[j].id;
-    dict["userId"] = data[j].user_id;
     dict["username"] = data[j].username;
     dict["title"] = data[j].title;
     dict["content"] = data[j].content;
