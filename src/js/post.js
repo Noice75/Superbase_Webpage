@@ -228,8 +228,8 @@ function createPost(data) {
 
 async function getImage(images, i) {
   const { data: fileData, error: fileError } = await supabase.storage
-    .from("gossip") // Replace with your bucket name
-    .getPublicUrl(`images/${images[i]}`); // Replace with the path to your image
+    .from("gossip")
+    .getPublicUrl(`images/${images[i]}`);
 
   if (fileError) {
     console.error("Error getting public URL:", fileError.message);
