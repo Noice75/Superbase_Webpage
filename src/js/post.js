@@ -78,11 +78,12 @@ function createPost(data) {
       <span id="dot1${postId}" class="dot ${postId}"></span>
       <span id="dot2${postId}" class="dot ${postId}"></span>
     </div>`;
-  console.log(data.img1, data.img2, data.title);
+
   if (data.img2 === null) {
     img2Container = "";
     controller = "";
   }
+
   const imageContainer = `<div id="swipe${postId}" class="slideshow-container">
       <!-- Full-width images with number and caption text -->
       ${img1Container}
