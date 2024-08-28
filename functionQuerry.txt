@@ -1,0 +1,50 @@
+CREATE OR REPLACE FUNCTION fetch_posts(
+    user_uuid UUID,
+    limit_count INT DEFAULT 10,
+    offset_count INT DEFAULT 0
+)
+RETURNS TABLE (
+    id UUID,
+    title TEXT,
+    content TEXT,
+    likes INT,
+    images JSONB,
+    created_at TIMESTAMP,
+    username TEXT,
+    isLiked BOOLEAN
+)
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+BEGIN
+    -- Ensure the user_id passed matches the current user's auth.uid()
+    IF user_uuid <> (SELECT auth.uid()) THEN
+        RAISE EXCEPTION 'Permission denied';
+    END IF;
+    -- Enforce a maximum limit
+    IF limit_count > 20 THEN
+        limit_count := 20;
+    END IF;
+    RETURN QUERY
+    SELECT 
+        g.id,
+        g.title,
+        g.content,
+        g.likes,
+        g.images,
+        g.created_at,
+        g.username,
+        EXISTS (
+            SELECT 1
+            FROM likes l
+            WHERE l.user_id = user_uuid
+            AND l.post_id = g.id
+        ) AS isLiked
+    FROM 
+        gossip g
+    ORDER BY 
+        g.created_at DESC
+    LIMIT limit_count
+    OFFSET offset_count;
+END
+$$;

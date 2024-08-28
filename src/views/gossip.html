@@ -6,27 +6,6 @@
     <title>Gossip</title>
     <link rel="stylesheet" href="../css/post.css" />
   </head>
-  <style>
-    /* styles.css */
-    .fullscreen-container {
-      display: none; /* Initially hidden */
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .fullscreen-image {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain; /* Ensures the image scales down to fit within the container */
-    }
-  </style>
   <body>
     <div id="post-sections" class="post-sections">
       <button onclick="window.location.href = 'uploadgossip.html'">
@@ -46,19 +25,6 @@
       />
     </div>
   </body>
-  <script>
-    // script.js
-    function showFullScreenImage(src) {
-      const container = document.getElementById("fullscreen-container");
-      const image = document.getElementById("fullscreen-image");
-      image.src = src;
-      container.style.display = "flex"; // Show the full-screen container
-    }
-
-    function hideFullScreenImage() {
-      const container = document.getElementById("fullscreen-container");
-      container.style.display = "none"; // Hide the full-screen container
-    }
-  </script>
+  <script></script>
   <script type="module" src="../js/post.js"></script>
 </html>

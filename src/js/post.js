@@ -1,4 +1,5 @@
 import supabase from "../utils/initialize.js";
+import { user } from "../utils/user.js";
 
 function createPost(data) {
   const postSections = document.getElementById("post-sections");
@@ -19,7 +20,7 @@ function createPost(data) {
 
           <div class="post-footer">
             <div class="votes">
-              <button id="like">
+              <button id="like${postId}">
                 <svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
       width="20px" height="20px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
     <g>
@@ -27,7 +28,7 @@ function createPost(data) {
         s-1.023-0.195-1.414-0.586c0,0-22.266-22.266-23.477-23.477s-1.823-1.961-1.823-1.961C3.245,27.545,2,24.424,2,21
         C2,13.268,8.268,7,16,7c3.866,0,7.366,1.566,9.899,4.101l0.009-0.009l4.678,4.677c0.781,0.781,2.047,0.781,2.828,0l4.678-4.677
         l0.009,0.009C40.634,8.566,44.134,7,48,7c7.732,0,14,6.268,14,14C62,24.424,60.755,27.545,58.714,29.977z"/>
-      <path fill="#FF0000" d="M58.714,29.977c0,0-0.612,0.75-1.823,1.961S33.414,55.414,33.414,55.414C33.023,55.805,32.512,56,32,56
+      <path id="likefill${data.id}" fill="#FFFFFF" d="M58.714,29.977c0,0-0.612,0.75-1.823,1.961S33.414,55.414,33.414,55.414C33.023,55.805,32.512,56,32,56
         s-1.023-0.195-1.414-0.586c0,0-22.266-22.266-23.477-23.477s-1.823-1.961-1.823-1.961C3.245,27.545,2,24.424,2,21
         C2,13.268,8.268,7,16,7c3.866,0,7.366,1.566,9.899,4.101l0.009-0.009l4.678,4.677c0.781,0.781,2.047,0.781,2.828,0l4.678-4.677
         l0.009,0.009C40.634,8.566,44.134,7,48,7c7.732,0,14,6.268,14,14C62,24.424,60.755,27.545,58.714,29.977z"/>
@@ -46,13 +47,28 @@ function createPost(data) {
     </g>
     </svg>
               </button>
-              <span>${data.likes}</span>
+              <span id="like_counter${data.id}">${data.likes}</span>
             </div>
             <button>Share</button>
           </div>
         </div>`;
 
     postSections.insertAdjacentHTML("beforeend", postHTML);
+
+    if (data.isLiked) {
+      document
+        .getElementById(`likefill${data.id}`)
+        .setAttribute("fill", "#FF0000");
+    } else if (!data) {
+      document
+        .getElementById(`likefill${data.id}`)
+        .setAttribute("fill", "#FFFFFF");
+    }
+    document
+      .getElementById(`like${postId}`)
+      .addEventListener("click", async () => {
+        await like(data.id);
+      });
     return;
   }
 
@@ -103,7 +119,7 @@ function createPost(data) {
 
       <div class="post-footer">
         <div class="votes">
-          <button id="like">
+          <button id="like${postId}">
             <svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
 	 width="20px" height="20px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
 <g>
@@ -111,7 +127,7 @@ function createPost(data) {
 		s-1.023-0.195-1.414-0.586c0,0-22.266-22.266-23.477-23.477s-1.823-1.961-1.823-1.961C3.245,27.545,2,24.424,2,21
 		C2,13.268,8.268,7,16,7c3.866,0,7.366,1.566,9.899,4.101l0.009-0.009l4.678,4.677c0.781,0.781,2.047,0.781,2.828,0l4.678-4.677
 		l0.009,0.009C40.634,8.566,44.134,7,48,7c7.732,0,14,6.268,14,14C62,24.424,60.755,27.545,58.714,29.977z"/>
-	<path fill="#FF0000" d="M58.714,29.977c0,0-0.612,0.75-1.823,1.961S33.414,55.414,33.414,55.414C33.023,55.805,32.512,56,32,56
+	<path id="likefill${data.id}" fill="#FFFFFF" d="M58.714,29.977c0,0-0.612,0.75-1.823,1.961S33.414,55.414,33.414,55.414C33.023,55.805,32.512,56,32,56
 		s-1.023-0.195-1.414-0.586c0,0-22.266-22.266-23.477-23.477s-1.823-1.961-1.823-1.961C3.245,27.545,2,24.424,2,21
 		C2,13.268,8.268,7,16,7c3.866,0,7.366,1.566,9.899,4.101l0.009-0.009l4.678,4.677c0.781,0.781,2.047,0.781,2.828,0l4.678-4.677
 		l0.009,0.009C40.634,8.566,44.134,7,48,7c7.732,0,14,6.268,14,14C62,24.424,60.755,27.545,58.714,29.977z"/>
@@ -130,13 +146,28 @@ function createPost(data) {
 </g>
 </svg>
           </button>
-          <span>${data.likes}</span>
+          <span id="like_counter${data.id}">${data.likes}</span>
         </div>
         <button>Share</button>
       </div>
     </div>`;
 
   postSections.insertAdjacentHTML("beforeend", postHTML);
+  if (data.isLiked) {
+    document
+      .getElementById(`likefill${data.id}`)
+      .setAttribute("fill", "#FF0000");
+  } else if (!data) {
+    document
+      .getElementById(`likefill${data.id}`)
+      .setAttribute("fill", "#FFFFFF");
+  }
+  document
+    .getElementById(`like${postId}`)
+    .addEventListener("click", async () => {
+      await like(data.id);
+    });
+  //Below code is not run unless image 2 is present
   if (data.img2 === null) {
     return;
   }
@@ -166,6 +197,22 @@ function createPost(data) {
     handleSwipe(startX, endX);
   });
 
+  document.getElementById(`prev${postId}`).addEventListener("click", () => {
+    plusSlides(-1);
+  });
+
+  document.getElementById(`next${postId}`).addEventListener("click", () => {
+    plusSlides(1);
+  });
+
+  document.getElementById(`dot1${postId}`).addEventListener("click", () => {
+    currentSlide(1);
+  });
+
+  document.getElementById(`dot2${postId}`).addEventListener("click", () => {
+    currentSlide(2);
+  });
+
   function handleSwipe(startX, endX) {
     const diffX = startX - endX;
 
@@ -183,22 +230,6 @@ function createPost(data) {
   function swipeRight() {
     plusSlides(-1);
   }
-
-  document.getElementById(`prev${postId}`).addEventListener("click", () => {
-    plusSlides(-1);
-  });
-
-  document.getElementById(`next${postId}`).addEventListener("click", () => {
-    plusSlides(1);
-  });
-
-  document.getElementById(`dot1${postId}`).addEventListener("click", () => {
-    currentSlide(1);
-  });
-
-  document.getElementById(`dot2${postId}`).addEventListener("click", () => {
-    currentSlide(2);
-  });
 
   function showSlides(n) {
     let i;
@@ -218,6 +249,35 @@ function createPost(data) {
     }
     slides[slideIndex - 1].style.display = "block";
     dots[slideIndex - 1].className += " active";
+  }
+}
+var c_of = 0;
+async function like(postId) {
+  //Show like animation
+  try {
+    const { data, error } = await supabase.rpc("toggle_like", {
+      p_userid: user.id,
+      p_postid: postId,
+    });
+
+    if (error) {
+      throw error;
+    }
+    var like_elm = document.getElementById(`like_counter${postId}`);
+    var like_fill = document.getElementById(`likefill${postId}`);
+    var currentLikes = parseInt(like_elm.innerText, 10);
+    if (data) {
+      like_elm.innerText = currentLikes + 1;
+      like_fill.setAttribute("fill", "#FF0000");
+    } else if (!data) {
+      like_elm.innerText = currentLikes - 1;
+      like_fill.setAttribute("fill", "#FFFFFF");
+    }
+    console.log("Insert successful:", data);
+    return data;
+  } catch (error) {
+    console.error("Error inserting into gossipbar:", error);
+    return null;
   }
 }
 
@@ -261,30 +321,67 @@ function formatTimeAgo(date) {
 
 async function fetchPost() {
   var dict = {};
-  const { data, error } = await supabase
-    .from("gossip")
-    .select("*")
-    .order("created_at", { ascending: false });
-  for (let j = 0; j < Object.keys(data).length; j++) {
-    console.log(data[j]);
-    if (data[j].images[0] === null) {
-      dict["img1"] = null;
-      dict["img2"] = null;
-    } else if (data[j].images[1] === null) {
-      dict["img1"] = await getImage(data[j].images, 0);
-      dict["img2"] = null;
-    } else {
-      dict["img1"] = await getImage(data[j].images, 0);
-      dict["img2"] = await getImage(data[j].images, 1);
+  try {
+    const { data, error } = await supabase.rpc("fetch_posts", {
+      user_uuid: user.id,
+      limit_count: 20,
+      offset_count: c_of,
+    });
+
+    if (error) {
+      throw error;
     }
-    dict["id"] = data[j].id;
-    dict["username"] = data[j].username;
-    dict["title"] = data[j].title;
-    dict["content"] = data[j].content;
-    dict["likes"] = data[j].likes;
-    dict["time"] = formatTimeAgo(data[j].created_at);
-    createPost(dict);
-    dict = {};
+    c_of = c_of + 20;
+    for (let j = 0; j < Object.keys(data).length; j++) {
+      if (data[j].images[0] === null) {
+        dict["img1"] = null;
+        dict["img2"] = null;
+      } else if (data[j].images[1] === null) {
+        dict["img1"] = await getImage(data[j].images, 0);
+        dict["img2"] = null;
+      } else {
+        dict["img1"] = await getImage(data[j].images, 0);
+        dict["img2"] = await getImage(data[j].images, 1);
+      }
+      dict["id"] = data[j].id;
+      dict["username"] = data[j].username;
+      dict["title"] = data[j].title;
+      dict["content"] = data[j].content;
+      dict["likes"] = data[j].likes;
+      dict["isLiked"] = data[j]["isliked"];
+      dict["time"] = formatTimeAgo(data[j].created_at);
+      createPost(dict);
+      dict = {};
+    }
+  } catch (error) {
+    console.error("Error inserting into gossipbar:", error);
+    return null;
   }
 }
+
+const scrollableDiv = document.getElementById("post-sections");
+
+scrollableDiv.addEventListener("scroll", () => {
+  const { scrollTop, scrollHeight, clientHeight } = scrollableDiv;
+  if (scrollTop + clientHeight >= scrollHeight) {
+    fetchPost();
+    console.log("Loading new posts");
+  }
+});
+// script.js
+function showFullScreenImage(src) {
+  const container = document.getElementById("fullscreen-container");
+  const image = document.getElementById("fullscreen-image");
+  image.src = src;
+  container.style.display = "flex"; // Show the full-screen container
+}
+
+function hideFullScreenImage() {
+  const container = document.getElementById("fullscreen-container");
+  container.style.display = "none"; // Hide the full-screen container
+}
+
 fetchPost();
+window.fetchPost = fetchPost;
+window.showFullScreenImage = showFullScreenImage;
+window.hideFullScreenImage = hideFullScreenImage;
