@@ -14,3 +14,11 @@ JOIN
     public.usernames
 ON 
     gossipbar.user_id = usernames.id;
+
+//Message
+CREATE TABLE messages (
+  id SERIAL PRIMARY KEY,
+  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+  message TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW()
+);
