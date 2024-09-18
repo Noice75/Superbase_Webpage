@@ -23,6 +23,10 @@ body {
   overflow-y: scroll;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .post-container {
   background-color: rgba(26, 28, 33, 0.5);
   padding: 20px;
@@ -237,4 +241,16 @@ img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain; /* Ensures the image scales down to fit within the container */
+}
+
+/* Basic link styles */
+.post-container a {
+  color: #007bff !important; /* Default link color */
+  text-decoration: none; /* Remove underline */
+}
+
+/* Hover state */
+a:hover {
+  color: #007bff; /* Color when hovered over */
+  text-decoration: underline; /* Underline on hover */
 }

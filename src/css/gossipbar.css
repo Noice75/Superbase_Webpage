@@ -1,66 +1,22 @@
 body {
   background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
   color: #fff;
-  font-family: sans-serif;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   margin: 0;
   padding: 0;
+  background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
+  overflow: hidden;
 }
 
 .container {
   display: flex;
   flex-direction: row;
-}
-
-.sidebar {
-  width: 240px;
-  background-color: #10182b; /* Dark navy blue */
-  padding: 20px;
-  height: 100vh;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
-}
-
-.sidebar h2 {
-  font-size: 18px;
-  margin-bottom: 15px;
-  font-weight: 600;
-  color: #c0c0c0; /* Slightly grayish white for less emphasis */
-}
-
-.sidebar button {
-  display: block;
-  width: 100%;
-  background-color: #1a2236; /* Darker navy for buttons */
-  color: #ffffff;
-  border: none;
-  padding: 12px;
-  margin-bottom: 20px;
-  cursor: pointer;
-  font-size: 14px;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
-}
-
-.sidebar button:hover {
-  background-color: #222c47; /* Slightly lighter on hover */
-}
-
-.sidebar ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.sidebar li {
-  margin-bottom: 15px;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  color: #ffffff;
-}
-
-.sidebar li img {
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
+  min-width: 600px;
+  margin-top: -150px;
 }
 
 .main-content {
@@ -168,6 +124,7 @@ body {
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
+    min-width: 400px;
   }
 
   .sidebar {
@@ -194,6 +151,10 @@ body {
     margin-bottom: 10px; /* Add margin to separate buttons */
     width: auto; /* Allow buttons to shrink or expand as needed */
     padding: 12px; /* Increase padding for easier tapping */
+  }
+
+  .custom-btn.btn-16 {
+    width: auto;
   }
 
   .input-group {
@@ -238,7 +199,7 @@ body {
 }
 
 .toolbar button:hover {
-  background-color: #333;
+  background-color: transparent;
 }
 
 .editor {
@@ -326,4 +287,108 @@ a {
 }
 .remove-button:hover {
   background: #d32f2f;
+}
+
+#editor {
+  border: 1px solid #ccc;
+  padding: 10px;
+  min-height: 100px;
+  /* color: black; */
+}
+
+#editor[data-placeholder]:empty::before {
+  content: attr(data-placeholder);
+  color: grey;
+}
+
+.custom-btn {
+  color: #ffffff;
+  width: 130px;
+  height: 45px;
+  font-family: "Lato", sans-serif;
+  font-weight: 1000;
+  font-size: large;
+  background: rgba(66, 65, 65, 0.473);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline; /* Use Flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  text-align: center; /* Center text horizontally */
+  border: 1px solid #fff;
+  box-sizing: border-box; /* Include border and padding in width and height */
+}
+
+.btn-16:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  direction: rtl;
+  z-index: -1;
+  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
+  transition: all 0.3s ease;
+}
+
+.btn-16:hover {
+  box-shadow: rgba(255, 255, 255, 1) -1px -1px, -2px -2px,
+    rgba(255, 255, 255, 1) -3px -3px, rgba(255, 255, 255, 0.9) -4px -4px,
+    rgba(255, 255, 255, 0.8) -5px -5px, rgba(255, 255, 255, 0.7) -6px -6px,
+    rgba(255, 255, 255, 0.6) -7px -7px, rgba(255, 255, 255, 0.5) -8px -8px,
+    rgba(255, 255, 255, 0.4) -9px -9px, rgba(255, 255, 255, 0.3) -10px -10px,
+    rgba(255, 255, 255, 0.2) -11px -11px, rgba(255, 255, 255, 0.1) -12px -12px;
+}
+
+.btn-16:hover:after {
+  left: auto;
+  right: 0;
+  width: 100%;
+}
+
+.btn-16:active {
+  top: 2px;
+}
+
+.loader {
+  width: 20px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 4px solid;
+  border-color: #ffffff #0000;
+  animation: l1 1s infinite;
+}
+@keyframes l1 {
+  to {
+    transform: rotate(0.5turn);
+  }
+}
+
+#notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: none; /* Hidden by default */
+  opacity: 0; /* Start hidden */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#notification.show {
+  display: block;
+  opacity: 1;
+  transform: translate(-50%, -50%) translateY(0); /* Slide in */
+}
+
+#notification.hide {
+  opacity: 0;
+  transform: translate(-50%, -50%) translateY(-20px); /* Slide out */
 }

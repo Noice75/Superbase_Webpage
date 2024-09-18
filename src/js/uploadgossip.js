@@ -4,6 +4,7 @@ import { user } from "../utils/user.js";
 const gossipTitle = document.getElementById("gossipTitle");
 const gossipBody = document.getElementById("editor");
 const post = document.getElementById("post");
+const notification = document.getElementById("notification");
 
 function format(command) {
   const selection = window.getSelection();
@@ -161,9 +162,12 @@ async function insertIntoGossipbar(title, content, images) {
     return null;
   }
 }
-
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 async function postGossip() {
-  post.style.display = "none";
+  // post.style.display = "none";
+  post.innerHTML = '<div class="loader"></div>';
   imagesUrl = { 0: null, 1: null }; // Clear the array before uploading
   for (let i = 0; i < imagesFile.length; i++) {
     const publicURL = await uploadImage(imagesFile[i]);
@@ -180,7 +184,18 @@ async function postGossip() {
       imagesUrl
     )
   ) {
-    post.style.display = "block";
+    notification.classList.add("show");
+    // Remove the show class after 3 seconds and add hide class for sliding out
+    setTimeout(() => {
+      notification.classList.remove("show");
+      notification.classList.add("hide");
+      setTimeout(() => {
+        notification.classList.remove("hide");
+      }, 500);
+    }, 3000);
+
+    await sleep(500);
+    window.location.href = "./gossip.html";
   }
 }
 
