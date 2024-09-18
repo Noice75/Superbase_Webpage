@@ -5,13 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gossip</title>
     <link rel="stylesheet" href="../css/post.css" />
+    <link rel="stylesheet" href="../css/navbar.css" />
   </head>
   <body>
-    <div id="post-sections" class="post-sections">
-      <button onclick="window.location.href = 'uploadgossip.html'">
-        Create Gossip
-      </button>
+    <!-- Top Navigation Bar -->
+    <div class="top-bar">
+      <div class="logo">
+        <a href="./homepage.html">
+          <img src="../assets/img/logo.png" alt="Logo" class="logo-image" />
+          Gossips
+        </a>
+      </div>
+      <div class="profile-container">
+        <img
+          onclick="window.location.href = 'Profile.html'"
+          src="../assets/img/poki.jpg"
+          alt="Profile"
+          class="profile-button"
+        />
+      </div>
     </div>
+
+    <!-- Bottom Navigation Bar -->
+    <div class="bottom-bar">
+      <div class="logo">
+        <img
+          onclick="window.location.href = 'uploadgossip.html'"
+          src="../assets/img/logo.png"
+          alt="Logo"
+          class="logo-image"
+        />
+      </div>
+      <!-- <div class="profile-container">
+        <img
+          onclick="window.location.href = 'Profile.html'"
+          src="../assets/img/poki.jpg"
+          alt="Profile"
+          class="profile-button"
+        />
+      </div> -->
+    </div>
+
+    <div id="post-sections" class="post-sections"></div>
     <div
       id="fullscreen-container"
       class="fullscreen-container"

@@ -1,12 +1,13 @@
 body {
-  background-color: #0a0f1e;
-  color: #d7dadc;
-  font-family: Arial, sans-serif;
+  background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
+  color: #fff;
+  font-family: sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
+  padding: 0;
 }
 
 .post-sections {
@@ -22,12 +23,15 @@ body {
 }
 
 .post-container {
-  background-color: #1a2236;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  box-sizing: border-box;
-  margin-bottom: 16px; /* Add space between posts */
+  background-color: rgba(26, 28, 33, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 20px 0; /* Vertical margin between cards */
+  width: 100%; /* Full width of the container */
+  max-width: 500px; /* Limit card width */
+  box-sizing: border-box; /* Ensure padding is included in the width */
+  backdrop-filter: blur(5px);
 }
 
 .post-header {
@@ -62,11 +66,15 @@ body {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 12px;
+  overflow-wrap: break-word; /* preferred */
+  word-wrap: break-word;
 }
 
 .post-content {
   font-size: 16px;
   margin-bottom: 12px;
+  overflow-wrap: break-word; /* preferred */
+  word-wrap: break-word;
 }
 
 .post-image {
@@ -121,10 +129,10 @@ img {
 /* Media query for smaller screens */
 @media (max-width: 600px) {
   .post-title {
-    font-size: 18px;
+    font-size: 20px;
   }
   .post-content {
-    font-size: 14px;
+    font-size: 16px;
   }
   .post-footer button {
     font-size: 12px;
@@ -135,10 +143,6 @@ img {
 }
 .post {
   padding-top: 20px;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 /* Slideshow container */

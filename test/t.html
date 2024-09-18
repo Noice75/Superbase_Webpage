@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Megrim&family=Pompiere&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background: #000;
+        color: #fff;
+      }
+      /* button {
+        margin: 20px;
+      } */
+      .custom-btn {
+        color: #fff;
+        width: 130px;
+        height: 40px;
+        padding: 10px 25px;
+        font-family: "Lato", sans-serif;
+        font-weight: 500;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+      }
+
+      /* 16 */
+      .btn-16 {
+        border: 1px solid #fff;
+        box-shadow: 0 0 5px #fff, 0 0 5px #fff inset;
+      }
+      .btn-16:after {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 100%;
+        top: 0;
+        left: 0;
+        direction: rtl;
+        z-index: -1;
+        box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+          7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
+        transition: all 0.3s ease;
+      }
+      .btn-16:hover {
+        box-shadow: rgba(255, 255, 255, 1) -1px -1px, -2px -2px,
+          rgba(255, 255, 255, 1) -3px -3px, rgba(255, 255, 255, 0.9) -4px -4px,
+          rgba(255, 255, 255, 0.8) -5px -5px, rgba(255, 255, 255, 0.7) -6px -6px,
+          rgba(255, 255, 255, 0.6) -7px -7px, rgba(255, 255, 255, 0.5) -8px -8px,
+          rgba(255, 255, 255, 0.4) -9px -9px,
+          rgba(255, 255, 255, 0.3) -10px -10px,
+          rgba(255, 255, 255, 0.2) -11px -11px,
+          rgba(255, 255, 255, 0.1) -12px -12px;
+      }
+      .btn-16:hover:after {
+        left: auto;
+        right: 0;
+        width: 100%;
+      }
+      .btn-16:active {
+        top: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Neon Button Animation</h1>
+    <p>Hover us and enjoy the satisfying neon animation designs!</p>
+    <div class="frame">
+      <button class="custom-btn btn-16"><span>Read More</span></button>
+    </div>
+  </body>
+</html>

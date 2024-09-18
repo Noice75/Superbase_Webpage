@@ -1,7 +1,7 @@
 body {
-  font-family: "Inter", sans-serif;
-  background-color: #0a0f1e; /* Navy blue background */
-  color: #ffffff; /* Bright white text */
+  background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
+  color: #fff;
+  font-family: sans-serif;
   margin: 0;
   padding: 0;
 }

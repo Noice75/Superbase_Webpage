@@ -1,14 +1,14 @@
 import supabase from "../utils/initialize.js";
 
 const { data: { session } = {} } = await supabase.auth.getSession(); //Gets Saved User Session
-if (session) window.location.href = "home.html"; // If already loggedin Redirect to home page
+if (session) window.location.href = "homepage.html"; // If already loggedin Redirect to home page
 
 async function showLoader() {
   document.getElementById("login-form").style.display = "none";
   document.getElementById("signup-form").style.display = "none";
   document.getElementById("loader").style.display = "block";
   await new Promise((resolve) => setTimeout(resolve, 1500));
-  window.location.href = "./home.html";
+  window.location.href = "./homepage.html";
 }
 
 async function login() {

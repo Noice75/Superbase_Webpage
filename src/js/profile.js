@@ -1,7 +1,13 @@
-import { user } from "../utils/user.js";
+import { user, logoutUser } from "../utils/user.js";
+document.getElementById("email").innerHTML = user.email;
+document.getElementById("username").innerHTML = user.username;
 
-document.getElementById("email").innerHTML = "Email: " + user.email;
-document.getElementById("id").innerHTML = "ID: " + user.id;
-document.getElementById("username").innerHTML = "Username: " + user.username;
-document.getElementById("ll").innerHTML =
-  "last_sign_in_at: " + user.last_sign_in_at;
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function logout() {
+  await sleep(100);
+  logoutUser();
+}
+document.getElementById("logout").addEventListener("click", logout);
