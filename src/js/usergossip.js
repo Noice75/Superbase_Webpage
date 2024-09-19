@@ -377,6 +377,12 @@ async function fetchPost() {
     if (error) {
       throw error;
     }
+    if (data.length === 0) {
+      if (document.getElementById("post-sections").childElementCount > 0) {
+        return;
+      }
+      document.getElementById("empty").style.display = "block";
+    }
     c_of = c_of + 20;
     for (let j = 0; j < Object.keys(data).length; j++) {
       if (data[j].images[0] === null) {

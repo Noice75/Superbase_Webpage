@@ -8,12 +8,14 @@ body {
   height: 100vh;
   margin: 0;
   padding: 0;
+  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 .post-sections {
   width: 100%;
   max-width: 600px;
-  height: 80vh; /* Adjust height as needed */
+  height: 95vh;
   overflow-y: auto;
   padding: 16px;
   margin-top: 60px;
