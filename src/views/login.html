@@ -23,13 +23,13 @@
           <label>Enter your password</label>
         </div>
         <div class="forget">
-          <a href="#" onclick="showForgotPassword()">Forgot password?</a>
+          <a onclick="showForgotPassword()">Forgot password?</a>
         </div>
         <button class="custom-btn btn-16" onclick="login()">Log In</button>
         <div class="register">
           <p>
             Don't have an account?
-            <a href="#" onclick="showSignup()">Register</a>
+            <a onclick="showSignup()">Register</a>
           </p>
         </div>
       </div>
@@ -53,9 +53,9 @@
           <input id="signup-confirm-password" type="password" required />
           <label>Confirm password</label>
         </div>
-        <button class="custom-btn btn-16" onclick="signup()">Sign Up</button>
+        <button id="signup" class="custom-btn btn-16">Sign Up</button>
         <p style="padding-top: 20px">
-          <a href="#" onclick="showLogin()">Already have an account? Login</a>
+          <a onclick="showLogin()">Already have an account? Login</a>
         </p>
       </div>
 
@@ -67,7 +67,7 @@
           <label>Enter your email</label>
         </div>
         <button onclick="forgotPassword()">Reset Password</button>
-        <p><a href="#" onclick="showLogin()">Back to Login</a></p>
+        <p><a onclick="showLogin()">Back to Login</a></p>
       </div>
 
       <!-- Loading -->

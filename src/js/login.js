@@ -3,10 +3,17 @@ import supabase from "../utils/initialize.js";
 const { data: { session } = {} } = await supabase.auth.getSession(); //Gets Saved User Session
 if (session) window.location.href = "homepage.html"; // If already loggedin Redirect to home page
 
-async function showLoader() {
+async function showLoader(data) {
   document.getElementById("login-form").style.display = "none";
   document.getElementById("signup-form").style.display = "none";
   document.getElementById("loader").style.display = "block";
+  const { data: username, error } = await supabase.rpc("get_username", {
+    p_user_id: data.session.user.id,
+  });
+  if (error) {
+    throw error;
+  }
+  localStorage.setItem("username", username);
   await new Promise((resolve) => setTimeout(resolve, 1500));
   window.location.href = "./homepage.html";
 }
@@ -23,16 +30,7 @@ async function login() {
   if (error) {
     alert("Login failed: " + error.message);
   } else {
-    //TODO: ADD LOADING SCREEN
-    const { data: usernameData, error1 } = await supabase
-      .from("usernames")
-      .select("*")
-      .eq("id", data.session.user.id);
-    if (error1) {
-      console.error("Error fetching data:", error);
-    }
-    localStorage.setItem("username", usernameData[0].username);
-    await showLoader();
+    await showLoader(data);
   }
 }
 
@@ -114,7 +112,7 @@ async function signUp() {
   }
 
   await uploadUsername(data.user.id, username);
-  await showLoader();
+  await showLoader(data);
 }
 
 // Function to reset password
@@ -152,7 +150,7 @@ function showForgotPassword() {
 
 // Expose functions to global scope so they can be used in HTML
 window.login = login;
-window.signUp = signUp;
+document.getElementById("signup").addEventListener("click", signUp);
 window.forgotPassword = forgotPassword;
 window.showLogin = showLogin;
 window.showSignup = showSignup;

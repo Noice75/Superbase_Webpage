@@ -191,3 +191,51 @@ footer {
 .btn-16:active {
   top: 2px;
 }
+
+.custom-btn-gossip {
+  margin-top: 10px;
+  color: #ffffff;
+  width: 150px;
+  height: 30px;
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.btn-gossip {
+  border: 1px solid #00f7ff;
+  box-shadow: 0 0 5px #00f7ff, 0 0 5px #00f7ff inset;
+}
+.btn-gossip:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  direction: rtl;
+  z-index: -1;
+  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
+  transition: all 0.3s ease;
+}
+.btn-gossip:hover {
+  box-shadow: rgba(255, 255, 255, 1) -1px -1px, -2px -2px,
+    rgba(255, 255, 255, 1) -3px -3px, rgba(255, 255, 255, 0.9) -4px -4px,
+    rgba(255, 255, 255, 0.8) -5px -5px, rgba(255, 255, 255, 0.7) -6px -6px,
+    rgba(255, 255, 255, 0.6) -7px -7px, rgba(255, 255, 255, 0.5) -8px -8px,
+    rgba(255, 255, 255, 0.4) -9px -9px, rgba(255, 255, 255, 0.3) -10px -10px,
+    rgba(255, 255, 255, 0.2) -11px -11px, rgba(255, 255, 255, 0.1) -12px -12px;
+}
+.btn-gossip:hover:after {
+  left: auto;
+  right: 0;
+  width: 100%;
+}
+.btn-gossip:active {
+  top: 2px;
+}
