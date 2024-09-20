@@ -57,7 +57,9 @@ function displayMessage(data) {
   console.log(data);
   const messageElement = document.createElement("div");
   messageElement.className = "message";
-  messageElement.textContent = `${data.username}: ${data.message}`; // Include username in the display
+  messageElement.textContent = `${data.username}: ${
+    data.message
+  } ${formatTimeAgo(data.created_at)}`; // Include username in the display
   chatbox.appendChild(messageElement);
   chatbox.scrollTop = chatbox.scrollHeight; // Auto-scroll to the latest message
 }
@@ -70,12 +72,40 @@ async function fetch_live() {
     } else {
       console.log("Fetch Live:", data);
     }
+    document.getElementById("loader").remove();
     for (let j = 0; j < Object.keys(data).length; j++) {
       displayMessage(data[j]);
     }
   } catch (error) {
     console.error("Unexpected error:", error);
   }
+}
+
+function formatTimeAgo(date) {
+  const now = new Date();
+  const timestampDate = new Date(date);
+  const offset = 5.5 * 60 * 60 * 1000; // 5 hours 30 minutes in milliseconds
+  const istDate = new Date(timestampDate.getTime() + offset);
+
+  // Calculate time difference
+  const diffMs = now - istDate;
+  const diffMins = Math.floor(diffMs / (1000 * 60));
+  const diffHrs = Math.floor(diffMins / 60);
+
+  let timeAgo;
+  if (diffHrs > 0) {
+    timeAgo = `${diffHrs} hr${diffHrs > 1 ? "s" : ""} ago`;
+  } else {
+    timeAgo = `${diffMins} min${diffMins > 1 ? "s" : ""} ago`;
+  }
+
+  // Format IST time to "h:mm AM/PM"
+  const hours = istDate.getHours();
+  const minutes = istDate.getMinutes().toString().padStart(2, "0");
+  const ampm = hours >= 12 ? "PM" : "AM";
+  const formattedTime = `${hours % 12 || 12}:${minutes} ${ampm}`;
+
+  return `• ${formattedTime}`;
 }
 
 sendMessageButton.addEventListener("click", handleSendMessage);
