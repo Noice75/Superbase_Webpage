@@ -17,8 +17,22 @@ ON
 
 //Message
 CREATE TABLE messages (
-  id SERIAL PRIMARY KEY,
-  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
-  message TEXT NOT NULL,
-  created_at TIMESTAMP DEFAULT NOW()
+  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  user_id uuid REFERENCES auth.users(id) ON DELETE CASCADE,
+  username text NOT NULL,  -- Store the username directly
+  message text NOT NULL,
+  created_at timestamp DEFAULT now()
 );
+
+
+//livemessages VIEW
+CREATE OR REPLACE VIEW public.livemessages AS
+SELECT 
+    u.username, 
+    u.id as user_id,
+    m.message, 
+    m.created_at
+FROM 
+    public.messages AS m
+JOIN 
+    public.usernames AS u ON m.username = u.username; -- Adjust based on your foreign key

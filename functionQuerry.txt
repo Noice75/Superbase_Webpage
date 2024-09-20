@@ -164,3 +164,29 @@ BEGIN
   RETURN result_username;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
+
+//fetch_live
+CREATE OR REPLACE FUNCTION fetch_live()
+RETURNS TABLE (
+    username text,
+    message text,
+    created_at timestamp
+) 
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+BEGIN
+    RETURN QUERY
+    SELECT 
+        u.username, 
+        m.message, 
+        m.created_at
+    FROM 
+        public.messages AS m
+    JOIN 
+        public.usernames AS u ON m.user_id = u.id  -- Adjust based on your foreign key
+    ORDER BY 
+        m.created_at DESC  -- Order by the created_at column in descending order
+    LIMIT 100;  -- Limit the results to the last 100 messages
+END;
+$$;
