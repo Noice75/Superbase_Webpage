@@ -87,6 +87,11 @@ function validateInputs(email, username, password, confirmpassword) {
     return false;
   }
 
+  if (username.length > 20) {
+    alert("Username cannot be more than 20 char long!");
+    return false;
+  }
+
   return true;
 }
 

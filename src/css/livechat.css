@@ -100,3 +100,31 @@ body::-webkit-scrollbar {
   border-radius: 5px;
   cursor: pointer;
 }
+
+.message-container {
+  background: #353e48;
+  color: white;
+  padding: 8px 12px;
+  margin: 5px 0;
+  border-radius: 7px;
+  display: inline-block; /* Ensures the box fits the content */
+  padding: 10px; /* Optional padding */
+  /* border: 1px solid #ccc; */
+  box-sizing: border-box; /* Includes padding in width calculation */
+  max-width: 100%;
+}
+.message-header {
+  font-weight: bold;
+}
+.message-time {
+  font-size: 0.85em;
+  color: rgb(156, 156, 156);
+  margin-left: 10px;
+}
+.message-body {
+  margin-top: 5px;
+  font-size: 1em;
+  word-wrap: break-word; /* Ensure long words wrap */
+  overflow-wrap: break-word; /* Modern alternative */
+  white-space: normal; /* Allow text to wrap normally */
+}

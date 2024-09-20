@@ -9,6 +9,6 @@ Gossip.addEventListener("click", function () {
   window.location.href = "./gossip.html";
 });
 
-Gossip.addEventListener("click", function () {
+Chat.addEventListener("click", function () {
   window.location.href = "./livechat.html";
 });
