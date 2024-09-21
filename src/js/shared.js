@@ -334,13 +334,15 @@ function hideFullScreenImage() {
 
 async function fetch_post() {
   document.getElementById("post-sections").innerHTML = "";
-  const id = window.location.hash.substring(1);
+  const urlParams = new URLSearchParams(window.location.search);
+  const id = urlParams.get("id");
   if (!id) {
     console.log("No Id specified");
     alert("No PostId Specified");
     window.location.href = "./homepage.html";
     return;
   }
+
   const { data, error } = await supabase.rpc("fetch_shared_posts", {
     user_uuid: user.id,
     post_id: id,
@@ -348,6 +350,8 @@ async function fetch_post() {
 
   if (error) {
     console.log(error.message);
+    alert("Error!");
+    window.location.href = "./homepage.html";
   }
 
   // if (data.length <= 0) {

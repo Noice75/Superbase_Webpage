@@ -14,9 +14,10 @@ async function showLoader(data) {
     throw error;
   }
   localStorage.setItem("username", username);
-  const id = window.location.hash.substring(1);
+  const urlParams = new URLSearchParams(window.location.search);
+  const id = urlParams.get("id");
   if (id) {
-    window.location.href = "./post.html#" + id;
+    window.location.href = "./post.html?id=" + id;
     return;
   }
   await new Promise((resolve) => setTimeout(resolve, 1500));

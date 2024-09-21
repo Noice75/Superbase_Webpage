@@ -1,1 +1,2 @@
-Fix username when signup do not allow users to loop through other usernames by createing rpc function in supabase
+Fix live chat not received when tab inactive
+Flex profile 💪
