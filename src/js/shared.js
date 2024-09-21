@@ -356,6 +356,8 @@ async function fetch_post() {
     return;
   }
 
+  document.getElementById("loader").remove();
+
   var dict = {};
   for (let j = 0; j < Object.keys(data).length; j++) {
     if (data[j].images[0] === null) {
