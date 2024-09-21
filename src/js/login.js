@@ -14,6 +14,11 @@ async function showLoader(data) {
     throw error;
   }
   localStorage.setItem("username", username);
+  const id = window.location.hash.substring(1);
+  if (id) {
+    window.location.href = "./post.html#" + id;
+    return;
+  }
   await new Promise((resolve) => setTimeout(resolve, 1500));
   window.location.href = "./homepage.html";
 }

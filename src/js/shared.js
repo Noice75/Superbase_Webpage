@@ -347,16 +347,14 @@ async function fetch_post() {
   });
 
   if (error) {
-    alert(error.message);
+    console.log(error.message);
   }
 
-  if (data.length <= 0) {
-    alert("Invalid PostId Specified");
-    window.location.href = "./homepage.html";
-    return;
-  }
-
-  document.getElementById("loader").remove();
+  // if (data.length <= 0) {
+  //   alert("Invalid PostId Specified");
+  //   window.location.href = "./homepage.html";
+  //   return;
+  // }
 
   var dict = {};
   for (let j = 0; j < Object.keys(data).length; j++) {
