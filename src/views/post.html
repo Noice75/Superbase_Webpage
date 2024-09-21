@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shared Gossip</title>
+    <script type="module" src="../js/shared.js"></script>
+    <link rel="stylesheet" href="../src/css/usergossip.css" />
+    <link rel="stylesheet" href="../src/css/navbar.css" />
+  </head>
+  <body>
+    <!-- Top Navigation Bar -->
+    <div class="top-bar">
+      <div class="logo">
+        <a href="./homepage.html">
+          <img src="../assets/img/logo.png" alt="Logo" class="logo-image" />
+          Gossips
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <div class="bottom-bar">
+      <div class="livechat">
+        <img
+          onclick="window.location.href = 'livechat.html'"
+          src="../assets/img/chat1.png"
+          alt="Logo"
+          class="icon-bottom-image"
+        />
+      </div>
+      <div class="icon-bottom">
+        <img
+          onclick="window.location.href = 'uploadgossip.html'"
+          src="../assets/img/create.jpg"
+          alt="Logo"
+          class="icon-bottom-image"
+        />
+      </div>
+
+      <div class="bottom-profile-container" style="padding-left: 20px">
+        <img
+          onclick="window.location.href = 'profile.html'"
+          src="../assets/img/poki.jpg"
+          alt="Profile"
+          class="bottom-profile-button"
+        />
+      </div>
+    </div>
+
+    <div id="empty" class="empty" style="display: none">
+      <h1>No Gossip Posted</h1>
+    </div>
+
+    <div id="post-sections" class="post-sections"></div>
+    <div
+      id="fullscreen-container"
+      class="fullscreen-container"
+      onclick="hideFullScreenImage()"
+    >
+      <img
+        id="fullscreen-image"
+        class="fullscreen-image"
+        src=""
+        alt="Full Screen Image"
+      />
+    </div>
+  </body>
+</html>
