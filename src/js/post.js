@@ -1,19 +1,6 @@
 import supabase from "../utils/initialize.js";
 import { user } from "../utils/user.js";
 
-const popup = document.querySelector(".popup"),
-  close = popup.querySelector(".close"),
-  field = popup.querySelector(".field"),
-  input = field.querySelector("input"),
-  copy = field.querySelector("button");
-
-var whatsapp = document.getElementById("whatsapp");
-var instagram = document.getElementById("instagram");
-var facebook = document.getElementById("facebook");
-var x = document.getElementById("x");
-var telegram = document.getElementById("telegram");
-var copyLink = document.getElementById("copyLink");
-
 function createPost(data) {
   const postSections = document.getElementById("post-sections");
   const postId = `post-${data["id"]}`;
@@ -372,16 +359,6 @@ async function fetchPost() {
   }
 }
 
-function share(id) {
-  console.log(id);
-  var url = `https://noice75.github.io/Superbase_Webpage/src/views/post?id=${id}`;
-  whatsapp.href = `https://api.whatsapp.com/send?text=I%20Found%20this%20Spicy 🌶️%20Gossip 🤭%20${encodeURI(
-    url
-  )}`;
-  copyLink.value = encodeURI(url);
-  popup.classList.toggle("show");
-}
-
 const scrollableDiv = document.getElementById("post-sections");
 
 scrollableDiv.addEventListener("scroll", () => {
@@ -404,6 +381,30 @@ function hideFullScreenImage() {
   container.style.display = "none"; // Hide the full-screen container
 }
 
+// Share
+const popup = document.querySelector(".popup"),
+  close = popup.querySelector(".close"),
+  field = popup.querySelector(".field"),
+  input = field.querySelector("input"),
+  copy = field.querySelector("button");
+
+var whatsapp = document.getElementById("whatsapp");
+var instagram = document.getElementById("instagram");
+var facebook = document.getElementById("facebook");
+var x = document.getElementById("x");
+var telegram = document.getElementById("telegram");
+var copyLink = document.getElementById("copyLink");
+
+function share(id) {
+  console.log(id);
+  var url = `https://noice75.github.io/Superbase_Webpage/src/views/post?id=${id}`;
+  whatsapp.href = `https://api.whatsapp.com/send?text=I%20Found%20this%20Spicy 🌶️%20Gossip 🤭%20${encodeURI(
+    url
+  )}`;
+  copyLink.value = encodeURI(url);
+  popup.classList.toggle("show");
+}
+
 close.onclick = () => {
   popup.classList.toggle("show");
 };
@@ -422,11 +423,7 @@ copy.onclick = () => {
   }
 };
 
-// document.addEventListener("click", (event) => {
-//   if (popup.classList.contains("show") && !popup.contains(event.target)) {
-//     popup.classList.remove("show");
-//   }
-// });
+//End Share
 
 fetchPost();
 window.fetchPost = fetchPost;

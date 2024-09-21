@@ -49,7 +49,7 @@ function createPost(data) {
                 </button>
                 <span id="like_counter${data.id}">${data.likes}</span>
               </div>
-              <button>Share</button>
+              <button onclick="share('${data.id}')">Share</button>
             </div>
           </div>`;
 
@@ -148,7 +148,7 @@ function createPost(data) {
             </button>
             <span id="like_counter${data.id}">${data.likes}</span>
           </div>
-          <button>Share</button>
+          <button onclick="share('${data.id}')">Share</button>
         </div>
       </div>`;
 
@@ -384,9 +384,54 @@ async function fetch_post() {
   }
 }
 
+// Share
+const popup = document.querySelector(".popup"),
+  close = popup.querySelector(".close"),
+  field = popup.querySelector(".field"),
+  input = field.querySelector("input"),
+  copy = field.querySelector("button");
+
+var whatsapp = document.getElementById("whatsapp");
+var instagram = document.getElementById("instagram");
+var facebook = document.getElementById("facebook");
+var x = document.getElementById("x");
+var telegram = document.getElementById("telegram");
+var copyLink = document.getElementById("copyLink");
+
+function share(id) {
+  console.log(id);
+  var url = `https://noice75.github.io/Superbase_Webpage/src/views/post?id=${id}`;
+  whatsapp.href = `https://api.whatsapp.com/send?text=I%20Found%20this%20Spicy 🌶️%20Gossip 🤭%20${encodeURI(
+    url
+  )}`;
+  copyLink.value = encodeURI(url);
+  popup.classList.toggle("show");
+}
+
+close.onclick = () => {
+  popup.classList.toggle("show");
+};
+
+copy.onclick = () => {
+  input.select(); //select input value
+  if (document.execCommand("copy")) {
+    //if the selected text is copied
+    field.classList.add("active");
+    copy.innerText = "Copied";
+    setTimeout(() => {
+      window.getSelection().removeAllRanges(); //remove selection from page
+      field.classList.remove("active");
+      copy.innerText = "Copy";
+    }, 3000);
+  }
+};
+
+//End Share
+
 // Run the function on page load and when hash changes
 fetch_post();
 window.addEventListener("hashchange", fetch_post);
 window.addEventListener("load", fetch_post);
+window.share = share;
 window.showFullScreenImage = showFullScreenImage;
 window.hideFullScreenImage = hideFullScreenImage;

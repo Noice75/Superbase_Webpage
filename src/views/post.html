@@ -7,7 +7,16 @@
     <script type="module" src="../utils/checkAuth.js"></script>
     <script type="module" src="../js/shared.js"></script>
     <link rel="stylesheet" href="../css/usergossip.css" />
+    <link rel="stylesheet" href="../css/sharepopup.css" />
     <link rel="stylesheet" href="../css/navbar.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v3.0.6/css/line.css"
+    />
     <style>
       .loader {
         padding-top: 50px;
@@ -81,6 +90,34 @@
         src=""
         alt="Full Screen Image"
       />
+    </div>
+    <!-- Share -->
+    <div class="popup">
+      <header>
+        <span>Share Gossip 🤭</span>
+        <div class="close"><i class="uil uil-times"></i></div>
+      </header>
+      <div class="shareContent">
+        <p>Share this link via</p>
+        <ul class="icons">
+          <a id="facebook" href="#"><i class="fab fa-facebook-f"></i></a>
+          <a id="x" href="#"><i class="fab fa-twitter"></i></a>
+          <a id="instagram" href="#"><i class="fab fa-instagram"></i></a>
+          <a id="whatsapp" href="#"><i class="fab fa-whatsapp"></i></a>
+          <a id="telegram" href="#"><i class="fab fa-telegram-plane"></i></a>
+        </ul>
+        <p>Or copy link</p>
+        <div class="field">
+          <i class="url-icon uil uil-link"></i>
+          <input
+            id="copyLink"
+            type="text"
+            readonly
+            value="https://noice75.github.io/Superbase_Webpage/src/views/post.html#"
+          />
+          <button>Copy</button>
+        </div>
+      </div>
     </div>
   </body>
 </html>
